@@ -66,10 +66,13 @@ def walk_directory(path: str) -> list:
 def main(path: str):
     print(f"Running script on {path}")
     file_list = walk_directory(path)
+    count = 0
     for file in file_list:
         f = FileName(file=file)
         if f.has_timestamp_name():
             f.rename_file()
+            count += 1
+    print(f"Modified {count} files")
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python obsidian_vault.py <path>")
