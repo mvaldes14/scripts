@@ -24,6 +24,7 @@
               pyright
               ruff
               python312Packages.pydantic
+              python312Packages.pyyaml
             ];
           };
         };
