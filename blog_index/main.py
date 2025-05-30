@@ -30,6 +30,7 @@ def generate_grouped_blog_index(input_directory, base_url, output_filename="inde
                 title = None
                 file_date = None
                 clean_filename = filename.split(".")[0]
+                draft = None
 
                 try:
                     with open(filepath, 'r', encoding='utf-8') as f:
@@ -43,6 +44,13 @@ def generate_grouped_blog_index(input_directory, base_url, output_filename="inde
                                 if frontmatter:
                                     date_value = frontmatter.get('date')
                                     title = frontmatter.get('title')
+                                    draft = frontmatter.get('draft')
+
+                                    # Skip posts in draft status
+                                    if draft:
+                                        continue
+
+                                    # Get date from post
                                     if date_value:
                                         try:
                                             file_date = datetime.strptime(str(date_value), "%Y-%m-%d").date()
@@ -74,8 +82,8 @@ def generate_grouped_blog_index(input_directory, base_url, output_filename="inde
     # Sort months in descending order (most recent month first)
     sorted_months = sorted(files_by_month.keys(), reverse=True)
 
-    with open(output_filename, "w", encoding="utf-8") as outfile:
-        outfile.write("# Blog Post Index\n\n") # Updated main heading
+    index_file_path = os.path.join(input_directory, output_filename)
+    with open(index_file_path, "w", encoding="utf-8") as outfile:
         for month_key in sorted_months:
             # Format month for the header
             outfile.write(f"# {month_key}\n\n")
