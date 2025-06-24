@@ -106,7 +106,7 @@ if __name__ == "__main__":
     # This is crucial for generating the correct permalinks
     # Example: "https://mycoolblog.com/archive/"
     # Example: "https://yourblog.com/posts/" (if your posts are under a 'posts' path)
-    base_blog_url = "https://mvaldes.dev" # <--- **CHANGE THIS TO YOUR BLOG'S BASE URL**
+    base_blog_url = "https://blog.mvaldes.dev" # <--- **CHANGE THIS TO YOUR BLOG'S BASE URL**
 
     # The output file will be named 'index.md' in the same directory as the script.
     # For a blog, you might place this in a 'content' or 'archive' folder.
