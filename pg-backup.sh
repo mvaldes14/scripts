@@ -23,7 +23,7 @@ if [ ! -d "$BACKUP_DIR" ]; then
 fi
 
 # Generate a timestamp for the filename
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TIMESTAMP=$(date +%Y%m%d)
 BACKUP_FILE="${DB_NAME}_${TIMESTAMP}.sql.gz" # .gz for gzip compression
 
 # Full path to the backup file
